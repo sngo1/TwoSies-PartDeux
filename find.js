@@ -28,3 +28,5 @@ your OTHER FXNS
 
 box.addEventListener("mousemove", findIt);
 
+console.log("X: ", e.X);
+console.log("Y: ", e.Y)
