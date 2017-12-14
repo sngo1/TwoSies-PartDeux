@@ -4,8 +4,10 @@ var boxWidth = box.offsetWidth;
 
 //hardcode target as center
 //randomize later
-var targetX = boxWidth / 2;
-var targetY = boxHeight / 2;
+//var targetX = boxWidth / 2;
+//var targetY = boxHeight / 2;
+var targetX = (Math.random() * boxWidth).toFixed(0);
+var targetY = (Math.random() * boxHeight).toFixed(0);
 
 // Distance from target at any point
 var d;
@@ -25,22 +27,41 @@ var distance = function (x0, y0, x1, y1) {
 var findIt = function(e) {
     // console.log("X: ", e.x);
     // console.log("Y: ", e.y);
+    console.log( targetX, "|", targetY);
     d = distance(targetX, targetY, e.x, e.y);
     console.log("Distance: ", d);
     changeColor();
 };
 
+// Maximum possible distance
+var maxDist = distance(0,0,boxWidth, boxHeight);
+
+// Change the background color as the mouse moves
 var changeColor = function(){
-    var maxDist = distance(0,0,boxWidth, boxHeight);
-    var percentage = (d/maxDist).toFixed(0);
-    percentage = 70;
+    var percentage = ((d/maxDist) * 100).toFixed(0);
+    console.log("Percentage: ", percentage);
     console.log("BEFORE: ",box);
-    box.setAttribute("background-color", "hsl(0,0%," + percentage + "%)");
+    box.setAttribute("style", "background-color:hsl(0,0%," + percentage + "%)");
     console.log("AFTER: ",box);
     return true;
 }
 
+var foundIt = function(e){
+    d = distance(targetX, targetY, e.x, e.y);
+    var percentage = ((d/maxDist) * 100).toFixed(0);
+    if (percentage == 0){
+	console.log("Found it!");
+	var image = document.createElement("img");
+	image.setAttribute('src', 'http://www.mltinnovations.com/wp-content/uploads/2013/01/iStock_000011738379XSmall.jpg');
+	image.setAttribute("style","display:block; margin: 0 auto; background-position:center");
+	console.log(image);
+	box.appendChild(image);
+	console.log(box);
+    }
+}
+
 box.addEventListener("mousemove", findIt);
+box.addEventListener("click", foundIt);
 
 console.log("Testing distance...");
 distance(0,0,3,4); // 5
