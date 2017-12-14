@@ -71,16 +71,3 @@ var foundIt = function(e){
 // Activate Event Listeners
 box.addEventListener("mousemove", findIt);
 box.addEventListener("click", foundIt);
-
-''' Test Functions
-console.log("Testing distance...");
-distance(0,0,3,4); // 5
-distance(0,0,5,12); // 13
-distance(0,0,7,24); // 25
-distance(0,0,0,16); // 16
-distance(0,0,17,0); // 17
-distance(-17,0,17,0); // 34
-distance(0,6,0,-6); // 12
-distance(0,-6,0,6); // 12
-distance(0,-6,0,-6); // 0
-'''
