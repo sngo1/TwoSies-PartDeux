@@ -62,8 +62,10 @@ var foundIt = function(e){
 	console.log("Found it!");
 	var image = document.createElement("img");
 	image.setAttribute('src', 'https://static1.squarespace.com/static/532e16b1e4b07cecfd92fdb3/t/546a8fd9e4b0dbd991d80eba/1416269785483/found-it-local-citation-sources.jpg');
-	image.setAttribute("style","display:block; margin: 0 auto;");
-	console.log(box);
+	image.setAttribute("style","display:block; margin: 0 auto; background-position:center");
+	var div = document.getElementById("box");
+	div.appendChild(image);
+	console.log(image);
 	found = true;
     }
 }
