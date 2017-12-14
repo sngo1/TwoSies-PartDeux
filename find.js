@@ -38,7 +38,7 @@ var maxDist = distance(0,0,boxWidth, boxHeight);
 
 // Change the background color as the mouse moves
 var changeColor = function(){
-    var percentage = ((d/maxDist) * 100).toFixed(0);
+    var percentage = 100 - ((d/maxDist) * 100).toFixed(0);
     console.log("Percentage: ", percentage);
     console.log("BEFORE: ",box);
     box.setAttribute("style", "background-color:hsl(0,0%," + percentage + "%)");
@@ -48,11 +48,11 @@ var changeColor = function(){
 
 var foundIt = function(e){
     d = distance(targetX, targetY, e.x, e.y);
-    var percentage = ((d/maxDist) * 100).toFixed(0);
-    if (percentage == 0){
+    var percentage = 100 - ((d/maxDist) * 100).toFixed(0);
+    if (percentage == 100){
 	console.log("Found it!");
 	var image = document.createElement("img");
-	image.setAttribute('src', 'http://www.mltinnovations.com/wp-content/uploads/2013/01/iStock_000011738379XSmall.jpg');
+	image.setAttribute('src', 'https://static1.squarespace.com/static/532e16b1e4b07cecfd92fdb3/t/546a8fd9e4b0dbd991d80eba/1416269785483/found-it-local-citation-sources.jpg');
 	image.setAttribute("style","display:block; margin: 0 auto; background-position:center");
 	console.log(image);
 	box.appendChild(image);
